@@ -29,7 +29,7 @@ checkpoint_path = '/root/kg/bert/chinese_roformer_L-12_H-768_A-12/bert_model.ckp
 dict_path = '/root/kg/bert/chinese_roformer_L-12_H-768_A-12/vocab.txt'
 
 
-def truncate_strings(maxlen, *strings):
+def truncate_strings(*strings):
     """截断字符串至总长度不超过maxlen
     """
     strings = [list(s) for s in strings]
@@ -50,7 +50,7 @@ def load_data(filename):
             q = qa['question']
             for a in qa['answers']:
                 if a['answer_start'] == -1:
-                    D.append(truncate_strings(maxlen, q, '', '', c))
+                    D.append(truncate_strings(q, '', '', c))
                 else:
                     start = a['answer_start']
                     end = start + len(a['text'])
@@ -153,7 +153,7 @@ model.compile(
 def extract_answer(question, context):
     """抽取答案函数
     """
-    question, context = truncate_strings(maxlen, question, context)
+    question, context = truncate_strings(question, context)
     q_token_ids = tokenizer.encode(question)[0]
     c_token_ids = tokenizer.encode(context)[0]
     token_ids = q_token_ids + c_token_ids[1:]
