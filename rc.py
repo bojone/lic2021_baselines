@@ -226,7 +226,7 @@ class Evaluator(keras.callbacks.Callback):
             self.best_val_f1 = metrics['F1']
             model.save_weights('best_model.weights')
         metrics['BEST F1'] = self.best_val_f1
-        print(metrics)
+        print(metrics, '\n')
 
 
 if __name__ == '__main__':
@@ -244,4 +244,4 @@ if __name__ == '__main__':
 else:
 
     model.load_weights('best_model.weights')
-    # predict_to_file('/root/baidu/datasets/rc/dureader_robust-test1/test1.json', 'rc_pred.json')
+    # predict_to_file('../datasets/test1.json', 'rc_pred.json')
