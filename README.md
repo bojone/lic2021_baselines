@@ -1,6 +1,6 @@
 # lic2021_baselines
 
-目前只有阅读理解赛道的，使用“RoFormer + Softmax”预测答案首尾。
+目前只有阅读理解赛道的，使用“[RoFormer](https://github.com/ZhuiyiTechnology/roformer) + Softmax”预测答案首尾。
 
 ## 依赖
 
