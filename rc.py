@@ -55,9 +55,7 @@ def load_data(filename):
                     start = a['answer_start']
                     end = start + len(a['text'])
                     D.append(
-                        truncate_strings(
-                            maxlen, q, c[:start], c[start:end], c[end:]
-                        )
+                        truncate_strings(q, c[:start], c[start:end], c[end:])
                     )
     return D
 
